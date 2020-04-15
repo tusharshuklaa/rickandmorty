@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: calc(1vw + .6em);
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #111;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), #111 url("/images/banner.jpg") no-repeat center fixed;
+  background-size: cover;
+}
+
+.globals__rickAndMorty--13E2U {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+.header-module__header--2j_at {
+  font-family: "Schoolbell", serif;
+  font-size: 100px;
+  line-height: 1;
+  color: #02b1c8;
+  margin: 20px 0 25px;
+  text-shadow: 0.02em 0.02em 0.02em #7ffa67, -0.02em -0.02em 0.02em #7ffa67, 0 0 0.2em #7ffa67;
+  animation: header-module__textShadow--3gCES 2s linear infinite alternate;
+}
+.header-module__header--2j_at span {
+  font-size: 50px;
+  margin: 0 -12px;
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=styles.chunk.css.map*/

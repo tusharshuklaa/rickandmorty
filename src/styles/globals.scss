@@ -1,0 +1,36 @@
+@import './base';
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: calc(1vw + .6em);
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  min-height: 100vh;
+  text-align: center;
+  text-shadow: 1px 1px 1px #111;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), #111 url('/images/banner.jpg') no-repeat center fixed;
+  background-size: cover;
+
+  :global(.theme_dark) & {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), #111 url('/images/space.jpeg') no-repeat center fixed;
+  }
+}
+
+:global(.rickAndMorty) {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}

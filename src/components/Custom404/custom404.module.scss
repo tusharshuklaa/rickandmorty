@@ -1,0 +1,461 @@
+// TODO:
+// [] refactor out all ( the many ) repeated styles ... eventually
+// [] add additional lab coat styles
+// [X] fix small border overflow on rick drool
+// [] add frown lines on rick's head
+// [X] add mugshot background lines
+// [X] fix body on vertical mobile resize
+// [X] add mugshot effect
+// [] refactor out magic values
+
+$rick-main: #E7DFCF;
+$rick-blue: #8EE1FA;
+
+@mixin flex($justify: null, $align: null, $direction: null, $wrap: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin rick-hair($hair-size: 2em, $left-border: 1em, $right-border: 1em, $pos-x: left, $x: 0, $pos-y: bottom, $y: 0, $degree: -130deg) {
+  position: absolute;
+  border-bottom: $hair-size solid $rick-blue;
+  border-left: $left-border solid transparent;
+  border-right: $right-border solid transparent;
+  #{$pos-x}: $x;
+  #{$pos-y}: $y;
+  transform: rotate($degree);
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  @include flex($justify: center, $align: center);
+}
+
+
+// === Rick ... wubalubadubdub!! ===
+.rickContainer {
+  position: relative;
+  top: 3em;
+  height: 24.815em;
+  width: 24.875em;
+  @include flex($justify: center, $align: center, $direction: column);
+  background: repeating-linear-gradient(#fff 0%, #fff 14%, #262626 20%);
+  box-shadow: inset 0em 0em 4em hsla(0, 0%, 0%, 1);
+  border: 1em solid #141414;
+  border-radius: .36em;
+
+  // black bar bottom
+  &:before {
+    content: '';
+    position: absolute;
+    height: 1em;
+    width: 100%;
+    bottom: -1em;
+    background: #141414;
+    z-index: 8000;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: radial-gradient(ellipse at 50% 75%, #262626 10%, #262626 10%, transparent 60%);
+  }
+}
+
+.rick {
+  // Ricks body starts after mouth
+  &__head {
+    position: relative;
+  }
+  &__ears {
+    position: absolute;
+    top: 6.55em;
+    left: -.65em;
+    right: 0;
+    margin: 0 auto;
+    height: 3.1em;
+    width: 9em;
+    background: $rick-main;
+    border: .02rem solid black;
+    border-radius: 60%;
+    box-shadow: inset -2em -.5em .7em hsla(0,0%,0%,.5);
+    z-index: 2000;
+  }
+  &__scalp {
+    position: absolute;
+    height: 13.118rem;
+    width: 7.734rem;
+    background: $rick-main;
+    border-radius: 46%;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 47%;
+    border-bottom-left-radius: 44%;
+    border-bottom-right-radius: 44%;
+    z-index: 100;
+
+    .hair_1 {
+      @include rick-hair($x: -.4em, $y: 1.2em);
+    }
+    .hair_2 {
+      @include rick-hair($x: -1.3em, $y: 1.98em);
+    }
+    .hair_3 {
+      @include rick-hair($hair-size: 4em, $left-border: 2em, $right-border: 2em, $x: -2.6em, $y: 2.6em, $degree: -120deg);
+    }
+    .hair_4 {
+      @include rick-hair($hair-size: 5em, $right-border: 4em, $x: -2.9em, $y: 5.9em, $degree: -60deg);
+    }
+    .hair_5 {
+      @include rick-hair($hair-size: 5em, $right-border: 4.7em, $x: -3.31em, $y: 9.5em, $degree: -48deg);
+    }
+    .hair_6 {
+      @include rick-hair($hair-size: 6em, $right-border: 3.9em, $x: -.9em, $y: 11.9em, $degree: -26deg);
+    }
+    .hair_7 {
+      @include rick-hair($hair-size: 6em, $left-border: 1.1em, $right-border: 2.1em, $x: 4.2em, $y: 12.4em, $degree: 20deg);
+    }
+    .hair_8 {
+      @include rick-hair($hair-size: 6em, $left-border: 2.1em, $right-border: 2.9em, $x: 6.2em, $y: 9.98em, $degree: 60deg);
+    }
+    .hair_9 {
+      @include rick-hair($hair-size: 6em, $left-border: 2.1em, $right-border: 4.4em, $x: 5.2em, $y: 5.98em, $degree: 90deg);
+    }
+    .hair_10 {
+      @include rick-hair($hair-size: 6em, $left-border: 2.1em, $right-border: 4.4em, $x: 4.2em, $y: 2.98em, $degree: 120deg);
+    }
+    .hair_11 {
+      @include rick-hair($hair-size: 6em, $left-border: 2.1em, $right-border: 4.4em, $x: 3.6em, $y: 1.28em, $degree: 130deg);
+    }
+    .hair_12 {
+      @include rick-hair($hair-size: 6em, $left-border: 2.1em, $right-border: 4.4em, $x: 2.36em, $y: .8em, $degree: 150deg);
+    }
+  }
+  &__face {
+    position: relative;
+    height: 13.118rem;
+    width: 7.734rem;
+    background: $rick-main;
+    border-radius: 46%;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 47%;
+    border-bottom-left-radius: 44%;
+    border-bottom-right-radius: 44%;
+    border: .02rem solid black;
+    overflow: hidden;
+    // face-shadow
+    box-shadow: inset -.6em -.5em .7em hsla(0,0%,0%,.5);
+    z-index: 3000;
+  }
+
+  &__brow {
+    position: absolute;
+    top: 2.7em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 7.5%;
+    width: 80%;
+    background: $rick-blue;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 12%;
+    border: .02em solid #141414;
+    z-index: 12;
+  }
+
+  &__eyeContainer {
+    position: absolute;
+    top: 3.3em;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    z-index: 8;
+  }
+
+  &__eye {
+    position: relative;
+    height: 3rem;
+    width: 40%;
+    background: #fff;
+    border-radius: 100%;
+    border-bottom: .02rem solid #141414;
+    overflow: hidden;
+
+    // lid
+    &:before, &:after {
+      content: '';
+    }
+
+    &:before {
+      position: absolute;
+      top: -.08rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      height: 49%;
+      width: 100%;
+      border-top-right-radius: 100%;
+      border-top-left-radius: 100%;
+      background: $rick-main;
+      z-index: 10;
+      animation: eye-blink 5s ease-in-out 1s infinite;
+    }
+
+    &:after {
+      position: absolute;
+      top: 1.3rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      border-radius: 100%;
+      height: 16%;
+      width: 13%;
+      background: black;
+      z-index: 9;
+    }
+  }
+  &__eyeRight {
+    float: right;
+    @extend .rick__eye;
+    right: .38em;
+  }
+  &__eyeLeft {
+    float: left;
+    @extend .rick__eye;
+    left: .38em;
+  }
+
+  // rick nose
+  &__nose {
+    position: absolute;
+    top: 6.3em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 15%;
+    width: 13%;
+    border-bottom: .08rem solid black;
+    border-left: .03rem solid black;
+    border-right: .03rem solid black;
+    border-bottom-left-radius: 70%;
+    border-bottom-right-radius: 60%;
+    background: $rick-main;
+
+    // undereye-shadow
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: -1.56em;
+      height: 2.5rem;
+      width: 2.2rem;
+      border-radius: 100%;
+      background: transparent;
+
+    }
+
+    &:before {
+      left: 1.35em;
+      box-shadow: .03em .2em 0 -.1em black
+    }
+
+    &:after {
+      right: 1.35em;
+      box-shadow: -.03em .2em 0 -.1em black;
+    }
+  }
+
+  // rick mouth
+  &__mouth {
+    position: absolute;
+    height: 40%;
+    width: 83%;
+    border-top-right-radius: 60%;
+    border-top-left-radius: 60%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: -16%;
+    background: transparent;
+    box-shadow: 0 -.23em 0 -.18em black;
+
+    // dimples
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 1em;
+      width: .76em;
+      background: $rick-main;
+    }
+
+    &:before {
+      left: .8em;
+      border-top-left-radius: 100%;
+      border-bottom-left-radius: 100%;
+      box-shadow: -.1em 0em hsla(0,0%,0%,1);
+    }
+
+    &:after {
+      background-color: transparent;
+      right: .8em;
+      border-top-right-radius: 100%;
+      border-bottom-right-radius: 100%;
+      box-shadow: .1em 0 hsla(0,0%,0%,1),
+        inset -.5em 9em #e0d8c9;
+    }
+
+    .drool {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      height: .84em;
+      width: 1.8em;
+      border-top-left-radius: 30%;
+      border-top-right-radius: 30%;
+      border-bottom-left-radius: 80%;
+      border-bottom-right-radius: 100%;
+      border-top: .02em solid hsla(0, 0%, 0%, .1);
+      box-shadow: 0 .1em .15em hsla(0, 0%, 0%, .8);
+      background: $rick-blue;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -.6em;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 1.4em;
+        width: .84em;
+        border-radius: 100%;
+        background: $rick-blue;
+        box-shadow: 0 .21em .05em -.05em hsla(0, 0%, 0%, .8);
+      }
+      // drool drop
+      &:after {
+        content: '';
+        position: absolute;
+        height: .28em;
+        width: .28em;
+        top: 1em;
+        border-radius: 100%;
+        left: -.23em;
+        background: $rick-blue;
+        box-shadow: 0 0 .01em .03em hsla(0, 0%, 0%, 1);
+      }
+    }
+  }
+
+  // === RICK'S BODY ===
+  &__body {
+    position: relative;
+    top: .6em;
+    border-bottom: 10.5em solid #fff;
+    border-left: 1.5em solid transparent;
+    border-right: 1.5em solid transparent;
+    height: 0;
+    width: 10.45em;
+    z-index: 2000;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+    }
+    // blue middle
+    &:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 2.095em;
+      height: 10.4em;
+      background: $rick-blue;
+      border: .02em solid #141414;
+      z-index: -1;
+    }
+  }
+
+  // neck
+  &__neck {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -2em;
+    height: 2.8em;
+    width: 2.3em;
+    background: $rick-main;
+    z-index: -1;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    box-shadow: inset -.5em .8em .7em hsla(0,0%,0%,.5);
+  }
+}
+
+// name box
+.name__sign {
+  position: absolute;
+  bottom: 1.4em;
+  width: 17em;
+  font-family: 'Rock Salt', cursive;
+  color: #fff;
+  font-size: .48rem;
+  text-align: left;
+  letter-spacing: .036rem;
+  padding: .2em 2.8em;
+  border-radius: .4em;
+  background: #606060;
+  box-shadow: inset 0em 0em 4em 1em hsla(0, 0%, 0%, 1);
+  transform: rotate(-5deg);
+  z-index: 9000;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+  }
+
+  &:before {
+    left: 3.7em;
+    top: -7.44em;
+    width: .3em;
+    height: 8.9em;
+    border-radius: 100%;
+    background: hsla(0, 0%, 0%, 1);
+    transform: rotate(48deg);
+    z-index: -1;
+  }
+  &:after {
+    right: 2.4em;
+    top: -5.8em;
+    width: .3em;
+    height: 6.3em;
+    border-radius: 100%;
+    background: hsla(0, 0%, 0%, 1);
+    transform: rotate(-30deg);
+    z-index: -1;
+  }
+}
+
+@keyframes eye-blink {
+  0%, 20%, 30%, 40% {
+    height: 49%;
+  }
+  50% {
+    height: 100%;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    height: 49%;
+  }
+}

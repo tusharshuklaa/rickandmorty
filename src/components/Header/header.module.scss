@@ -1,0 +1,37 @@
+@import './../../styles/base';
+
+.header {
+  font-family: 'Schoolbell', serif;
+  font-size: 100px;
+  line-height: 1.0;
+  color: #02b1c8;
+  margin: 20px 0 25px;
+  text-shadow: 0.02em 0.02em 0.02em #7ffa67, -0.02em -0.02em 0.02em #7ffa67, 0 0 0.2em #7ffa67;
+  animation: textShadow 2s linear infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  span {
+    font-size: 50px;
+    margin: 0 -12px;
+    vertical-align: middle;
+    padding: 0 0.6em;
+  }
+}
+
+.icons {
+  position: absolute;
+  right: 20px;
+  width: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 0.3em;
+  color: #7ffa67;
+  cursor: pointer;
+}
