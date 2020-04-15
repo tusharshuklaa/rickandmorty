@@ -1,3 +1,7 @@
+# Rick And Morty Demo Project
+
+This project is a WIP and a lot of cuntionalities are pending as of now. Intent of the project is perform search/filter for rick and morty characters and a few more features.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
